@@ -75,6 +75,29 @@ export function getUsers(pageIndex = 0, pageSize = 10, query) {
     };
 }
 
+//get user role=doctor
+export function getUsersByDoctor(pageIndex = 0, pageSize = 10, query) {
+    return async () => {
+        try {
+
+            let requestUrl = `/api/v1/user/doctor?page=${pageIndex + 1}&limit=${pageSize}`;
+
+            if (query) {
+                requestUrl = `${requestUrl}&query=${"query"}`
+            }
+
+            const response = await axios.get(requestUrl);
+
+            if (response.status === 200) {
+                dispatch(users.actions.getUsersSuccess(response.data.data));
+            }
+
+        } catch (error) {
+            dispatch(users.actions.hasError(error));
+        }
+    };
+}
+
 export function createUser(formData) {
     return async () => {
         try {            

@@ -53,7 +53,8 @@ const StatusCell = ({ value }) => {
       return <Chip color="success" label="Active" size="small" variant="light" />;
     case 'Pending':
     default:
-      return <Chip color="info" label="Pending" size="small" variant="light" />;
+      return <Chip color="error" label="Inactive" size="small" variant="light" />;
+      //return <Chip color="info" label="Pending" size="small" variant="light" />;
   }
 };
 
@@ -159,7 +160,7 @@ const PaymentListPage = () => {
         disableSortBy: true
       },
       {
-        Header: 'PAYMENT ID',
+        Header: 'UID',
         accessor: '_id',
         className: 'cell-center',
         Cell: IndexCell
@@ -170,40 +171,44 @@ const PaymentListPage = () => {
         Cell: CustomCell
       },
       {
-        Header: 'DATE',
-        accessor: 'date',
+        Header: 'Address',
+        accessor: 'address',
         disableSortBy: true
       },
-       {
-         Header: 'AMOUNT',
-         accessor: 'amount'
-       },
-       {
-        Header: 'PAYMENT METHOD',
-        accessor: 'method',
-        Cell: NumberFormatCell
+      {
+        Header: 'Email',
+        accessor: 'email'
       },
       {
-        Header: 'CONTACT',
+        Header: 'Contact',
         accessor: 'phone',
         Cell: NumberFormatCell
       },
       {
-        Header: 'STATUS',
-        accessor: 'status'
+        Header: 'Job Role',
+        accessor: 'jobRole'
       },
       {
-        Header: 'LOYALITY CARD NO.',
-        accessor: 'cardno',
-        
+        Header: 'Image',
+        accessor: 'photo'
       },
-      
-    //   {
-    //     Header: 'INVOICE NUMBER ',
-    //     accessor: 'invoice'
-    //   },
-      
-     
+      {
+        Header: 'Start Date',
+        accessor: 'startDate'
+      },
+      {
+        Header: 'Date of Birth',
+        accessor: 'dateOfBirth'
+      },
+      {
+        Header: 'Note',
+        accessor: 'note'
+      },
+      {
+        Header: 'Status',
+        accessor: 'accountStatus',
+        Cell: StatusCell
+      },
       {
         Header: 'Actions',
         className: 'cell-center',

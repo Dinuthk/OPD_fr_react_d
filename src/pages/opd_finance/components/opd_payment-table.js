@@ -9,7 +9,7 @@ import { useSelector } from 'store';
 import { useExpanded, useFilters, useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import { dispatch } from 'store';
 // import { getRoles } from 'store/reducers/role';
-import { getUsers } from 'store/reducers/user';
+import { getUsersByDoctor } from 'store/reducers/user';
 import { CSVExport, HeaderSort, SortingSelect, TablePagination, TableRowSelection } from 'components/third-party/ReactTable';
 import { GlobalFilter, renderFilterTypes } from 'utils/react-table';
 import { PlusOutlined } from '@ant-design/icons';
@@ -69,7 +69,7 @@ function PaymentTable({ columns, getHeaderProps, handleAdd }) {
 
   useEffect(() => {
     // dispatch(getRoles(pageIndex, pageSize, query));
-    dispatch(getUsers(pageIndex, pageSize, query));
+    dispatch(getUsersByDoctor(pageIndex, pageSize, query));
     console.error('dispatched',users);
   }, [pageIndex, pageSize, query, action]);
 
